@@ -21,19 +21,19 @@ def process_gem(path, name):
 
     I9_pd = pd.DataFrame({'I9code':I9code, 'I10code':I10code})
     total_count = pd.DataFrame(I9_pd['I9code'].value_counts()).shape[0]
-    print "The total number of ontologies in " + name +" is " + str(total_count)
+    print("The total number of ontologies in " + name +" is " + str(total_count))
 
     I9_pdNoDx = I9_pd[I9_pd['I10code'] == 'NoDx']
     no_mapping = pd.DataFrame(I9_pdNoDx['I9code'].value_counts()).shape[0]
-    print "The number of no mapping ontologies in " + name +" is " + str(no_mapping)
+    print("The number of no mapping ontologies in " + name +" is " + str(no_mapping))
 
     I9_rmNoMap = I9_pd[I9_pd['I10code'] != 'NoDx']
     I9_valueCounts = pd.DataFrame(I9_rmNoMap['I9code'].value_counts())
     one_one_map = I9_valueCounts[I9_valueCounts['I9code'] == 1].shape[0]
-    print "The number of one to one mapping ontologies in " + name +" is " + str(one_one_map)
+    print("The number of one to one mapping ontologies in " + name +" is " + str(one_one_map))
 
     one_many_map = I9_valueCounts[I9_valueCounts['I9code'] > 1].shape[0]
-    print "The number of one to many mapping ontologies in " + name +" is " + str(one_many_map)
+    print("The number of one to many mapping ontologies in " + name +" is " + str(one_many_map))
 
 
 parser = argparse.ArgumentParser()
@@ -51,12 +51,12 @@ args = parser.parse_args()
 
 
 if not args.path:
-    print "Missing command line info '-path', use --help or -h to see the detail"
+    print("Missing command line info '-path', use --help or -h to see the detail")
 else:
     if not args.I9:
         if not args.I10:
             name = None
-            print "Missing command line info '-I9' or '-I10', use --help or -h to see the detail"
+            print("Missing command line info '-I9' or '-I10', use --help or -h to see the detail")
         else:
             name = 'I10'
     else:
