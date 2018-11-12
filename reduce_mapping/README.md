@@ -1,6 +1,6 @@
 Reduce-Mapping
 
-Python code for reducing the I10 to I9 mapping of ontologies data
+Python code for reducing one to many mapping of the I10 to I9 of ontologies data
 
 Running insturctions:
 
