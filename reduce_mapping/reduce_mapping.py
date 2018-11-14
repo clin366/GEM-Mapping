@@ -2,10 +2,12 @@ import re
 import pandas as pd 
 import argparse
 
+# define function to do reduce mapping
 def reduce_mapping(mapping_file, code_frequency_file):
     I9code = []
     I10code = []
     Flag = []
+    # read the original I10 to I9 mapping file
     with open(mapping_file, 'r') as fi:
         line = fi.readline()
         
@@ -58,7 +60,7 @@ def reduce_mapping(mapping_file, code_frequency_file):
     print("The total one to many mapping I10 codes is:" + str(len(I10_index)))
     print("The number of I10 codes that could be reduced is:" + str(len(one_mapping_I10)))
 
-
+# use argpares to parse command line options
 parser = argparse.ArgumentParser()
 parser.add_argument("-m", "--mapping_file", type = str, 
                     help="Path to the I10 mapping to I9 file")
@@ -67,6 +69,7 @@ parser.add_argument("-c", "--code_frequency_file", type=str,
 
 args = parser.parse_args()
 
+# check if the file path is correct
 Flag = True
 if args.mapping_file != None: 
     if args.code_frequency_file != None:
